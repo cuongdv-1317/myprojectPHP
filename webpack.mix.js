@@ -11,7 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
     require('tailwindcss'),
     require('autoprefixer'),
-]);
+    ])
+    .postCss('resources/css/custom.css', 'public/css')
+    .copy('node_modules/pickerjs/dist/picker.min.css', 'public/css')
+    .copy('node_modules/pickerjs/dist/picker.min.js', 'public/js');
